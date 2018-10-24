@@ -1,7 +1,7 @@
 package model;
 
 public class Board
-{
+{ //added board
     private char[][] board = {{'*', 'P', '*', 'W', '*'},
                              {'G', ' ', '!', ' ', 'L'},
                              {'*', ' ', '*', ' ', '*'},
