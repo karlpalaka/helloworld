@@ -27,6 +27,8 @@ public class Controller
             // gabe's turn third
             // we run each object's turn phase
 
+            // here we have players play
+
             // the SOLE end condition for the game
             if (rey.getTrainsRemaining() <= 2 || jas.getTrainsRemaining() <= 2 || gabe.getTrainsRemaining() <= 2) break;
         }
