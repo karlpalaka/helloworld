@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Cards
 {
     // should be 30 for final game, but here are 9 destination cards
+    // also missing points per card
     private char[][] destinationCards = {{0, 0, 2, 0}, // G
                                          {0, 0, 0, 2}, // P
                                          {0, 2, 0, 4}, // W
@@ -19,6 +20,7 @@ public class Cards
     private char[] trainCards;
 
     // going to need to shuffle this
+
     public Cards()
     {
         trainCards = new char[96];
@@ -35,11 +37,24 @@ public class Cards
 
     // ========== getters ==========
 
+    /**
+     * A destination card is a pair of coordinates. <br>
+     * Consider it as (x1, y1) and (x2, y2). <br>
+     * It is used for specifying conditions for <br>
+     * to earn points.
+     * @return Destination cards.
+     */
     public char[][] getDestinationCards()
     {
         return destinationCards;
     }
 
+    /**
+     * Used for player placement conditions. <br>
+     * If player has enough of a certain color, <br>
+     * they can place trains on the Board.
+     * @return Array of cards.
+     */
     public char[] getTrainCards()
     {
         return trainCards;
@@ -47,6 +62,12 @@ public class Cards
 
     // ========== setters ==========
 
+    /**
+     * Used for player placement conditions. <br>
+     * If player has enough of a certain color, <br>
+     * they can place trains on the Board.
+     * @param trainCards Array of cards.
+     */
     public void setTrainCards(char[] trainCards)
     {
         this.trainCards = trainCards;
