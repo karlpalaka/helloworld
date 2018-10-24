@@ -8,10 +8,14 @@ public class Board
                              {'R', ' ', ' ', ' ', 'Y'},
                              {'*', 'B', '*', 'O', '*'}};
 
-    // ========== getters/setters ==========
+    // ========== getters ==========
 
     public char[][] getBoard()
     {
         return board;
     }
+
+    // ========== setters ==========
+
+
 }

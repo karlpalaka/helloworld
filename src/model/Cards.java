@@ -32,12 +32,7 @@ public class Cards
         Arrays.fill(trainCards, 84, 95, 'L');
     }
 
-    // ========== getters/setters ==========
-
-    public void setTrainCards(char[] trainCards)
-    {
-        this.trainCards = trainCards;
-    }
+    // ========== getters ==========
 
     public char[][] getDestinationCards()
     {
@@ -47,5 +42,12 @@ public class Cards
     public char[] getTrainCards()
     {
         return trainCards;
+    }
+
+    // ========== setters ==========
+
+    public void setTrainCards(char[] trainCards)
+    {
+        this.trainCards = trainCards;
     }
 }

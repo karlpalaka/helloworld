@@ -6,11 +6,11 @@ public class Player
     private int score;
     private char trainColor;
     private int trainsRemaining = 45;
-    private Cards pieces;
+    private Cards cards;
 
     public Player(String name, char trainColor)
     {
-        pieces = new Cards();
+        cards = new Cards();
 
         score = 0;
 
@@ -18,7 +18,47 @@ public class Player
         this.trainColor = trainColor;
     }
 
-    // ========== getters/setters ==========
+    // ========== getters ==========
 
+    public String getName()
+    {
+        return name;
+    }
 
+    public int getScore()
+    {
+        return score;
+    }
+
+    public char getTrainColor()
+    {
+        return trainColor;
+    }
+
+    public int getTrainsRemaining()
+    {
+        return trainsRemaining;
+    }
+
+    public Cards getCards()
+    {
+        return cards;
+    }
+
+    // ========== setters ==========
+
+    public void setScore(int score)
+    {
+        this.score = score;
+    }
+
+    public void setTrainsRemaining(int trainsRemaining)
+    {
+        this.trainsRemaining = trainsRemaining;
+    }
+
+    public void setCards(Cards cards)
+    {
+        this.cards = cards;
+    }
 }
