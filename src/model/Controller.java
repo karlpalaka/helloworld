@@ -9,7 +9,6 @@ public class Controller
         // alternate players
 
         Board board = new Board();
-        Cards cards = new Cards();
         Player jas = new Player("Jas", 'O');
         Player rey = new Player("Rey", 'R');
         Player gabe = new Player("Gabe", 'B');
@@ -26,7 +25,6 @@ public class Controller
             // rey's turn second
             // gabe's turn third
             // we run each object's turn phase
-
             // here we have players play
 
             // the SOLE end condition for the game

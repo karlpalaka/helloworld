@@ -18,6 +18,7 @@ public class Cards
     // should be 110 for final game, missing 14 wildcards
     private char[] trainCards;
 
+    // going to need to shuffle this
     public Cards()
     {
         trainCards = new char[96];
