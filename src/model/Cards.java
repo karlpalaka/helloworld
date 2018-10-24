@@ -3,7 +3,7 @@ package model;
 import java.util.Arrays;
 
 public class Cards
-{
+{ //
     // should be 30 for final game, but here are 9 destination cards
     private char[][] destinationCards = {{0, 0, 2, 0}, // G
                                          {0, 0, 0, 2}, // P
