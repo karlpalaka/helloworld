@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Board;
-import model.GamePieces;
+import model.Cards;
 
 public class Main extends Application
 {
@@ -15,7 +15,7 @@ public class Main extends Application
     public void start(Stage primaryStage) throws Exception
     {
 
-        GamePieces gp = new GamePieces();
+        Cards gp = new Cards();
         Board board = new Board();
 
         // Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
