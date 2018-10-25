@@ -6,7 +6,7 @@ public class Player
     private int score;
     private char trainColor;
     private int trainsRemaining = 45;
-    private Cards cards;
+    private char[] cards;
 
     /**
      * L - Blue <br>
@@ -19,12 +19,31 @@ public class Player
      */
     public Player(String name, char trainColor)
     {
-        cards = new Cards();
-
         score = 0;
+        cards = new char[Cards.CARD_LIMIT];
 
         this.name = name;
         this.trainColor = trainColor;
+    }
+
+    // ========== other ==========
+
+    /**
+     * G - Green <br>
+     * P - Pink <br>
+     * W - White <br>
+     * ! - Wildcard <br>
+     * R - Red <br>
+     * Y - Yellow <br>
+     * B - Blue <br>
+     * O - Orange <br>
+     * L - Blue
+     * @param c The color character to add to player's hand.
+     */
+    public void appendCard(char c)
+    {
+        if (cards.length == Cards.CARD_LIMIT) throw new ArrayIndexOutOfBoundsException(Cards.CARD_LIMIT);
+        cards[cards.length] = c;
     }
 
     // ========== getters ==========
@@ -69,7 +88,7 @@ public class Player
     /**
      * @return Player's cards.
      */
-    public Cards getCards()
+    public char[] getCards()
     {
         return cards;
     }
@@ -95,7 +114,7 @@ public class Player
     /**
      * @param cards Player's cards.
      */
-    public void setCards(Cards cards)
+    public void setCards(char[] cards)
     {
         this.cards = cards;
     }

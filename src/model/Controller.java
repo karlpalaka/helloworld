@@ -12,11 +12,6 @@ public class Controller
 
     public static void main(String[] args)
     {
-        // init game with board, player, cards
-        // player does one of three things
-        // alternate players
-
-
         Board board = new Board();
         Player jas = new Player("Jas", 'O');
         Player rey = new Player("Rey", 'R');
@@ -30,11 +25,6 @@ public class Controller
         // this is the main game loop
         while(playersHaveTrains)
         {
-            // jas's turn first
-            // rey's turn second
-            // gabe's turn third
-            // we run each object's turn phase
-            // here we have players play
             temp = playerTurn(jas);
             temp = playerTurn(rey);
             temp = playerTurn(gabe);

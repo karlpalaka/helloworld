@@ -1,7 +1,10 @@
 package model;
 
 public class Board
-{ //added board
+{
+    public static int R_LIM = 5;
+    public static int C_LIM = 5;
+
     private char[][] board = {{'*', 'P', '*', 'W', '*'},
                              {'G', ' ', '!', ' ', 'L'},
                              {'*', ' ', '*', ' ', '*'},
@@ -22,6 +25,20 @@ public class Board
     public char[][] getBoard()
     {
         return board;
+    }
+
+    /**
+     * Return the element (city, track, wildcard, or <br>
+     * nothing on the corresponding map coordinate.
+     * @param r Row index.
+     * @param c Column index.
+     * @return
+     */
+    public char getElement(int r, int c)
+    {
+        if (r < 0 || r >= R_LIM || c < 0 || c >= C_LIM) throw new ArrayIndexOutOfBoundsException("Out of Bounds!");
+
+        return board[r][c];
     }
 
     // ========== setters ==========
