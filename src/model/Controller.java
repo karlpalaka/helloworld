@@ -31,4 +31,19 @@ public class Controller
             if (rey.getTrainsRemaining() <= 2 || jas.getTrainsRemaining() <= 2 || gabe.getTrainsRemaining() <= 2) break;
         }
     }
+
+
+    private boolean drawTrainCards(Player player) {
+        
+    }
+
+
+    private boolean claimRoute(Player player) {
+
+    }
+
+
+    private boolean drawDestinationTickets(Player player) {
+
+    }
 }
