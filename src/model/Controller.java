@@ -34,4 +34,19 @@ public class Controller
 
 
     }
+
+
+    private boolean drawTrainCards(Player player) {
+        
+    }
+
+
+    private boolean claimRoute(Player player) {
+
+    }
+
+
+    private boolean drawDestinationTickets(Player player) {
+
+    }
 }
