@@ -14,7 +14,6 @@ public class ControllerTest
         Controller con = new Controller();
         con.setAccessible(true);
 
-
         Player player = new Player("john", 'R');
         assertTrue(con.drawTrainCards(player));
     }
