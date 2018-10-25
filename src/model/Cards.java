@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Cards
 {
@@ -33,6 +34,8 @@ public class Cards
         Arrays.fill(trainCards, 60, 71, 'B');
         Arrays.fill(trainCards, 72, 83, 'O');
         Arrays.fill(trainCards, 84, 95, 'L');
+
+        randomizeArray(trainCards);
     }
 
     // ========== getters ==========
@@ -71,5 +74,21 @@ public class Cards
     public void setTrainCards(char[] trainCards)
     {
         this.trainCards = trainCards;
+    }
+
+    private static char[] randomizeArray(char[] array)
+    {
+        Random rgen = new Random();
+
+        for (int i = 0; i < array.length; ++i)
+        {
+            int randomPosition = rgen.nextInt(array.length);
+            char temp = array[i];
+
+            array[i] = array[randomPosition];
+            array[randomPosition] = temp;
+        }
+
+        return array;
     }
 }

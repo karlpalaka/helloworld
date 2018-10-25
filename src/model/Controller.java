@@ -32,7 +32,7 @@ public class Controller
             temp = playerTurn(jas);
             temp = playerTurn(rey);
             temp = playerTurn(gabe);
-            
+
             // the SOLE end condition for the game
             if (rey.getTrainsRemaining() <= 2 || jas.getTrainsRemaining() <= 2 || gabe.getTrainsRemaining() <= 2) break;
         }
