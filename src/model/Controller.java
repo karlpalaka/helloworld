@@ -101,11 +101,16 @@ public class Controller
 
 
     private static boolean claimRoute(Player player) {
+        System.out.println("Choose a route:");
+        System.out.println("Choose a Train Car color");
+        // does player have
         return true;
     }
 
 
     private static boolean drawDestinationTickets(Player player) {
+        // draw 3 and show the player
+        System.out.println("Choose which ones to keep: 1, 2, 3.");
         return true;
     }
 
