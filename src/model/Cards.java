@@ -7,8 +7,8 @@ public class Cards
 {
     public static int CARD_LIMIT = 96;
 
-    // should be 30 for final game, but here are 9 destination cards
-    // also missing points per card
+    // todo should be 30 for final game, but here are 9 destination cards
+    // todo also missing points per card
     private char[][] destinationCards = {{0, 0, 2, 0}, // G
                                          {0, 0, 0, 2}, // P
                                          {0, 2, 0, 4}, // W
@@ -19,10 +19,8 @@ public class Cards
                                          {4, 2, 4, 2}, // O
                                          {0, 4, 2, 4}}; // L (Blue)
 
-    // should be 110 for final game, missing 14 wildcards
+    // todo should be 110 for final game, missing 14 wildcards
     private char[] trainCards;
-
-    // going to need to shuffle this
 
     public Cards()
     {

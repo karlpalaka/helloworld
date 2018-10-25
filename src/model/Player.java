@@ -43,7 +43,6 @@ public class Player
     public void appendCard(char c)
     {
         if (cards.length == Cards.CARD_LIMIT) throw new ArrayIndexOutOfBoundsException(Cards.CARD_LIMIT);
-
         cards[cards.length] = c;
     }
 
