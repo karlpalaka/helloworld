@@ -1,9 +1,12 @@
 package model;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class Cards
 {
+    public static int CARD_LIMIT = 96;
+
     // should be 30 for final game, but here are 9 destination cards
     // also missing points per card
     private char[][] destinationCards = {{0, 0, 2, 0}, // G
@@ -23,7 +26,7 @@ public class Cards
 
     public Cards()
     {
-        trainCards = new char[96];
+        trainCards = new char[CARD_LIMIT];
 
         Arrays.fill(trainCards, 0,  11, 'G');
         Arrays.fill(trainCards, 12, 23, 'P');
@@ -33,6 +36,8 @@ public class Cards
         Arrays.fill(trainCards, 60, 71, 'B');
         Arrays.fill(trainCards, 72, 83, 'O');
         Arrays.fill(trainCards, 84, 95, 'L');
+
+        randomizeArray(trainCards);
     }
 
     // ========== getters ==========
@@ -71,5 +76,21 @@ public class Cards
     public void setTrainCards(char[] trainCards)
     {
         this.trainCards = trainCards;
+    }
+
+    private static char[] randomizeArray(char[] array)
+    {
+        Random rand = new Random();
+
+        for (int i = 0; i < array.length; ++i)
+        {
+            int randomPosition = rand.nextInt(array.length);
+            char temp = array[i];
+
+            array[i] = array[randomPosition];
+            array[randomPosition] = temp;
+        }
+
+        return array;
     }
 }
