@@ -4,15 +4,9 @@ import java.util.Scanner;
 
 public class Controller
 {
-    private Cards cards;
-
-    public Controller() {
-        cards = new Cards();
-    }
-
     public static void main(String[] args)
     {
-        Board board = new Board();
+        Graph board = new Graph();
         Player jas = new Player("Jas", 'O');
         Player rey = new Player("Rey", 'R');
         Player gabe = new Player("Gabe", 'B');
@@ -32,9 +26,6 @@ public class Controller
             // the SOLE end condition for the game
             if (rey.getTrainsRemaining() <= 2 || jas.getTrainsRemaining() <= 2 || gabe.getTrainsRemaining() <= 2) break;
         }
-
-
-
     }
 
     private static boolean playerTurn(Player player)

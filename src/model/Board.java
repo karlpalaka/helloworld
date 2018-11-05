@@ -1,5 +1,6 @@
 package model;
 
+@Deprecated
 public class Board
 {
     public static final int R_LIM = 5;
@@ -58,6 +59,4 @@ public class Board
     }
 
     // ========== setters ==========
-
-
 }

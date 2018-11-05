@@ -15,17 +15,17 @@ public class Cards
      * It is used for specifying conditions for <br>
      * to earn points. The last column specifies <br>
      * score earned from completed destination.
-     * @return Destination cards.
      */
+    @Deprecated
     private char[][] destinationCards = {{0, 0, 2, 0, 3}, // G
-                                         {0, 0, 0, 2, 3}, // P
-                                         {0, 2, 0, 4, 3}, // W
-                                         {0, 2, 2, 2, 1}, // ! - 1 point because easiest
-                                         {2, 0, 4, 0, 3}, // R
-                                         {2, 4, 4, 4, 3}, // Y
-                                         {4, 0, 4, 2, 3}, // B
-                                         {4, 2, 4, 2, 3}, // O
-                                         {0, 4, 2, 4, 3}}; // L (Blue)
+                                           {0, 0, 0, 2, 3}, // P
+                                           {0, 2, 0, 4, 3}, // W
+                                           {0, 2, 2, 2, 1}, // ! - 1 point because easiest
+                                           {2, 0, 4, 0, 3}, // R
+                                           {2, 4, 4, 4, 3}, // Y
+                                           {4, 0, 4, 2, 3}, // B
+                                           {4, 2, 4, 2, 3}, // O
+                                           {0, 4, 2, 4, 3}}; // L (Blue)
 
     // todo should be 110 for final game, missing 14 wildcards
     private char[] trainCards;
@@ -116,7 +116,7 @@ public class Cards
 
     // ========== helpers  ==========
 
-    private static char[] randomizeArray(char[] array)
+    private static void randomizeArray(char[] array)
     {
         Random rand = new Random();
 
@@ -128,7 +128,5 @@ public class Cards
             array[i] = array[randomPosition];
             array[randomPosition] = temp;
         }
-
-        return array;
     }
 }
