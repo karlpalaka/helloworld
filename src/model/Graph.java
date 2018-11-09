@@ -32,12 +32,12 @@ public class Graph
         }
     }
 
-    private void addEdge(Cities source, Cities destination, int weight)
+    private void addEdge(Cities source, Cities destination, RouteColor routeColor, int weight)
     {
         int sourceCode = source.ordinal();
         int destinationCode = destination.ordinal();
 
-        Edge edge = new Edge(sourceCode, destinationCode, weight);
+        Edge edge = new Edge(sourceCode, destinationCode, weight, routeColor);
         adjList[sourceCode].addFirst(edge);
     }
 
@@ -47,13 +47,23 @@ public class Graph
      */
     public static void main(String[] args)
     {
-        int vertices = 3;
+        int vertices = Cities.values().length;
         Graph graph = new Graph(vertices);
 
         // top left corner of board
-        graph.addEdge(Cities.VANCOUVER, Cities.CALGARY, 3);
-        graph.addEdge(Cities.VANCOUVER, Cities.SEATTLE, 1);
-        graph.addEdge(Cities.SEATTLE, Cities.CALGARY, 4);
+        graph.addEdge(Cities.VANCOUVER, Cities.CALGARY, RouteColor.ANY, 3);
+        graph.addEdge(Cities.VANCOUVER, Cities.SEATTLE, RouteColor.ANY, 1);
+        graph.addEdge(Cities.VANCOUVER, Cities.SEATTLE, RouteColor.ANY, 1);
+        graph.addEdge(Cities.SEATTLE, Cities.CALGARY, RouteColor.ANY, 4);
+        graph.addEdge(Cities.SEATTLE, Cities.PORTLAND, RouteColor.ANY, 1);
+        graph.addEdge(Cities.SEATTLE, Cities.PORTLAND, RouteColor.ANY, 1);
+        graph.addEdge(Cities.PORTLAND, Cities.SAN_FRANCISCO, RouteColor.GREEN, 5);
+        graph.addEdge(Cities.PORTLAND, Cities.SAN_FRANCISCO, RouteColor.PURPLE, 5);
+        graph.addEdge(Cities.PORTLAND, Cities.SALT_LAKE_CITY, RouteColor.BLUE, 6);
+        graph.addEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, RouteColor.YELLOW, 3);
+        graph.addEdge(Cities.SAN_FRANCISCO, Cities.LOS_ANGELES, RouteColor.PURPLE, 3);
+        graph.addEdge(Cities.SAN_FRANCISCO, Cities.SALT_LAKE_CITY, RouteColor.WHITE, 5);
+        graph.addEdge(Cities.SAN_FRANCISCO, Cities.SALT_LAKE_CITY, RouteColor.ORANGE, 5);
 
         graph.printGraph();
     }
