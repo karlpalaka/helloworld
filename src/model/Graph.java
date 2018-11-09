@@ -32,26 +32,28 @@ public class Graph
         }
     }
 
-    private void addEdge(int source, int destination, int weight)
+    private void addEdge(Cities source, Cities destination, int weight)
     {
-        Edge edge = new Edge(source, destination, weight);
-        adjList[source].addFirst(edge);
-        adjList[destination].addFirst(edge);
+        int sourceCode = source.ordinal();
+        int destinationCode = destination.ordinal();
+
+        Edge edge = new Edge(sourceCode, destinationCode, weight);
+        adjList[sourceCode].addFirst(edge);
     }
 
-    public static void main(String[] args) {
-        int vertices = 6;
+    /**
+     * Currently ONLY for testing graph.
+     * @param args
+     */
+    public static void main(String[] args)
+    {
+        int vertices = 3;
         Graph graph = new Graph(vertices);
 
-        graph.addEdge(0, 1, 4);
-        graph.addEdge(0, 2, 3);
-        graph.addEdge(1, 3, 2);
-        graph.addEdge(1, 2, 5);
-        graph.addEdge(2, 3, 7);
-        graph.addEdge(3, 4, 2);
-        graph.addEdge(4, 0, 4);
-        graph.addEdge(4, 1, 4);
-        graph.addEdge(4, 5, 6);
+        // top left corner of board
+        graph.addEdge(Cities.VANCOUVER, Cities.CALGARY, 3);
+        graph.addEdge(Cities.VANCOUVER, Cities.SEATTLE, 1);
+        graph.addEdge(Cities.SEATTLE, Cities.CALGARY, 4);
 
         graph.printGraph();
     }

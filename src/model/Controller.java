@@ -6,7 +6,7 @@ public class Controller
 {
     public static void main(String[] args)
     {
-        Graph board = new Graph();
+        Graph board = new Graph(Cities.values().length);
         Player jas = new Player("Jas", 'O');
         Player rey = new Player("Rey", 'R');
         Player gabe = new Player("Gabe", 'B');

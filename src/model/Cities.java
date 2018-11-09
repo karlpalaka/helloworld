@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * This provides a list of cities. <br>
+ * Do not change unless necessary.
+ */
 public enum Cities
 {
     ATLANTA,
