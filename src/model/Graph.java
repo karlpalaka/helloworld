@@ -21,24 +21,29 @@ public class Graph
 
     public void printGraph()
     {
+        String sourceString;
+        String destinationString;
+        String distanceString;
+        
         for (int i = 0; i < vertices; ++i)
         {
             LinkedList<Edge> list = adjList[i];
 
             for (int j = 0; j < list.size(); ++j)
-            {
-                System.out.println("vertex-" + i + " is connected to " + list.get(j).destination + " with weight " + list.get(j).weight);
+            {   
+                sourceString = adjList[i].get(j).source.toString();
+                destinationString = adjList[i].get(j).destination.toString();
+                distanceString = Integer.toString(adjList[i].get(j).weight);
+                
+                System.out.println(sourceString + " to " + destinationString + " distance " + distanceString);
             }
         }
     }
 
     private void addEdge(Cities source, Cities destination, RouteColor routeColor, int weight)
     {
-        int sourceCode = source.ordinal();
-        int destinationCode = destination.ordinal();
-
-        Edge edge = new Edge(sourceCode, destinationCode, weight, routeColor);
-        adjList[sourceCode].addFirst(edge);
+        Edge edge = new Edge(source, destination, weight, routeColor);
+        adjList[source.ordinal()].addFirst(edge);
     }
 
     /**

@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class Cards
 {
-    public static final int CARD_LIMIT = 96;
-    public static final int SHUFFLE_TIMES = 1; // large values will slow game down
+    public static final int SHUFFLE_MULTIPLIER = 1; // large values will slow game down
+    public static final int CARD_LIMIT = 144;
 
     // todo should be 30 for final game, but here are 9 destination cards
     /**
@@ -18,21 +18,20 @@ public class Cards
      */
     @Deprecated
     private char[][] destinationCards = {{0, 0, 2, 0, 3}, // G
-                                           {0, 0, 0, 2, 3}, // P
-                                           {0, 2, 0, 4, 3}, // W
-                                           {0, 2, 2, 2, 1}, // ! - 1 point because easiest
-                                           {2, 0, 4, 0, 3}, // R
-                                           {2, 4, 4, 4, 3}, // Y
-                                           {4, 0, 4, 2, 3}, // B
-                                           {4, 2, 4, 2, 3}, // O
-                                           {0, 4, 2, 4, 3}}; // L (Blue)
+                                         {0, 0, 0, 2, 3}, // P
+                                         {0, 2, 0, 4, 3}, // W
+                                         {0, 2, 2, 2, 1}, // ! - 1 point because easiest
+                                         {2, 0, 4, 0, 3}, // R
+                                         {2, 4, 4, 4, 3}, // Y
+                                         {4, 0, 4, 2, 3}, // B
+                                         {4, 2, 4, 2, 3}, // O
+                                         {0, 4, 2, 4, 3}}; // L (Blue)
 
-    // todo should be 110 for final game, missing 14 wildcards
     private char[] trainCards;
 
     /**
      * Initializes, fills, and randomizes trainCards <br>
-     * SHUFFLE_TIMES number of times.
+     * SHUFFLE_MULTIPLIER number of times.
      */
     public Cards()
     {
@@ -47,7 +46,7 @@ public class Cards
         Arrays.fill(trainCards, 72, 83, 'O');
         Arrays.fill(trainCards, 84, 95, 'L');
 
-        for (int i = 0; i < SHUFFLE_TIMES; ++i)
+        for (int i = 0; i < SHUFFLE_MULTIPLIER; ++i)
         {
             randomizeArray(trainCards);
         }
