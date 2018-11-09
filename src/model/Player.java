@@ -3,10 +3,10 @@ package model;
 public class Player
 {
     private String name;
+    private TeamColor teamColor;
+    private RouteColor[] trainCards;
+    private int trainPieces;
     private int score;
-    private char trainColor;
-    private int trainsRemaining = 45;
-    private char[] cards;
 
     /**
      * L - Blue <br>
@@ -15,15 +15,16 @@ public class Player
      * Y - Yellow <br>
      * B - Black
      * @param name Player's name.
-     * @param trainColor Character representing train color.
+     * @param teamColor Character representing train color.
      */
-    public Player(String name, char trainColor)
+    public Player(String name, TeamColor teamColor)
     {
         score = 0;
-        cards = new char[Cards.CARD_LIMIT];
+        trainPieces = 45;
+        trainCards = new RouteColor[Cards.CARD_LIMIT];
 
         this.name = name;
-        this.trainColor = trainColor;
+        this.teamColor = teamColor;
     }
 
     // ========== other ==========
@@ -38,31 +39,22 @@ public class Player
      * B - Blue <br>
      * O - Orange <br>
      * L - Blue
-     * @param c The color character to add to player's hand.
+     * @param routeColor The color character representing color <br>
+     * of card.
      */
-    public void appendCard(char c)
-    {
-        if (cards.length == Cards.CARD_LIMIT) throw new ArrayIndexOutOfBoundsException(Cards.CARD_LIMIT);
-        cards[cards.length] = c;
-    }
+    public void addCardToHand(RouteColor routeColor) { trainCards[trainCards.length] = routeColor; }
 
     // ========== getters ==========
 
     /**
      * @return Player's name.
      */
-    public String getName()
-    {
-        return name;
-    }
+    public String getName() { return name; }
 
     /**
      * @return Player's score.
      */
-    public int getScore()
-    {
-        return score;
-    }
+    public int getScore() { return score; }
 
     /**
      * L - Blue <br>
@@ -72,50 +64,32 @@ public class Player
      * B - Black <br>
      * @return Player's train color.
      */
-    public char getTrainColor()
-    {
-        return trainColor;
-    }
+    public TeamColor getTeamColor() { return teamColor; }
 
     /**
      * @return Player's remaining trains.
      */
-    public int getTrainsRemaining()
-    {
-        return trainsRemaining;
-    }
+    public int getTrainPieces() { return trainPieces; }
 
     /**
-     * @return Player's cards.
+     * @return Player's trainCards.
      */
-    public char[] getCards()
-    {
-        return cards;
-    }
+    public RouteColor[] getTrainCards() { return trainCards; }
 
     // ========== setters ==========
 
     /**
      * @param score Initialize score.
      */
-    public void setScore(int score)
-    {
-        this.score = score;
-    }
+    public void setScore(int score) { this.score = score; }
 
     /**
-     * @param trainsRemaining Player's remaining trains.
+     * @param trainPieces Player's remaining trains.
      */
-    public void setTrainsRemaining(int trainsRemaining)
-    {
-        this.trainsRemaining = trainsRemaining;
-    }
+    public void setTrainPieces(int trainPieces) { this.trainPieces = trainPieces; }
 
     /**
-     * @param cards Player's cards.
+     * @param trainCards Player's trainCards.
      */
-    public void setCards(char[] cards)
-    {
-        this.cards = cards;
-    }
+    public void setTrainCards(RouteColor[] trainCards) { this.trainCards = trainCards; }
 }

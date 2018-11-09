@@ -4,25 +4,18 @@ import java.util.Scanner;
 
 public class Controller
 {
-    private Cards cards;
-
-    public Controller() {
-        cards = new Cards();
-    }
-
     public static void main(String[] args)
     {
-        Board board = new Board();
-        Player jas = new Player("Jas", 'O');
-        Player rey = new Player("Rey", 'R');
-        Player gabe = new Player("Gabe", 'B');
+        Graph gameBoard = new Graph(Cities.values().length);
+        Player jas = new Player("Jas", TeamColor.BLACK);
+        Player rey = new Player("Rey", TeamColor.RED);
+        Player gabe = new Player("Gabe", TeamColor.GREEN);
 
-        // this is our end condition when a player has <= 2 trains left,
-        // at game init players have 45 each
+        // this is our end condition when a player has <= 2 trains left
         boolean playersHaveTrains = true;
         boolean temp = false;
 
-        // this is the main game loop
+        // main game loop
         while(playersHaveTrains)
         {
             temp = playerTurn(jas);
@@ -30,11 +23,8 @@ public class Controller
             temp = playerTurn(gabe);
 
             // the SOLE end condition for the game
-            if (rey.getTrainsRemaining() <= 2 || jas.getTrainsRemaining() <= 2 || gabe.getTrainsRemaining() <= 2) break;
+            if (rey.getTrainPieces() <= 2 || jas.getTrainPieces() <= 2 || gabe.getTrainPieces() <= 2) break;
         }
-
-
-
     }
 
     private static boolean playerTurn(Player player)

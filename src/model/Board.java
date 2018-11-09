@@ -1,15 +1,32 @@
 package model;
 
+@Deprecated
 public class Board
 {
-    public static int R_LIM = 5;
-    public static int C_LIM = 5;
+    public static final int R_LIM = 5;
+    public static final int C_LIM = 5;
 
+    /**
+     * Board representing map. <br>
+     * Letters correspond to colored path. <br><br>
+     *
+     * * - City <br><br>
+     *
+     * G - Green <br>
+     * P - Pink <br>
+     * W - White <br>
+     * ! - Wildcard <br>
+     * R - Red <br>
+     * Y - Yellow <br>
+     * B - Blue <br>
+     * O - Orange <br>
+     * L - Blue
+     */
     private char[][] board = {{'*', 'P', '*', 'W', '*'},
-                             {'G', ' ', '!', ' ', 'L'},
-                             {'*', ' ', '*', ' ', '*'},
-                             {'R', ' ', ' ', ' ', 'Y'},
-                             {'*', 'B', '*', 'O', '*'}};
+                              {'G', ' ', '!', ' ', 'L'},
+                              {'*', ' ', '*', ' ', '*'},
+                              {'R', ' ', ' ', ' ', 'Y'},
+                              {'*', 'B', '*', 'O', '*'}};
 
     // ========== getters ==========
 
@@ -36,12 +53,10 @@ public class Board
      */
     public char getElement(int r, int c)
     {
-        if (r < 0 || r >= R_LIM || c < 0 || c >= C_LIM) throw new ArrayIndexOutOfBoundsException("Out of Bounds!");
+        if (r < 0 || r >= R_LIM || c < 0 || c >= C_LIM) throw new ArrayIndexOutOfBoundsException();
 
         return board[r][c];
     }
 
     // ========== setters ==========
-
-
 }
