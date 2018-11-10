@@ -29,6 +29,7 @@ public class Player
     }
 
     // ========== other ==========
+
     /**
      * G - Green <br>
      * P - Pink <br>
@@ -45,6 +46,7 @@ public class Player
     public void addCardToHand(RouteColor routeColor) { trainCards[trainCards.length] = routeColor; }
 
     // ========== getters ==========
+
     /**
      * @return Player's name.
      */
@@ -73,11 +75,11 @@ public class Player
     public RouteColor[] getTrainCards() { return trainCards; }
 
     // ========== setters ==========
+
     /**
      * @param score Initialize score.
      */
     public void setScore(int score) { this.score = score; }
-
     /**
      * @param trainPieces Player's remaining trains.
      */
