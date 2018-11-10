@@ -130,21 +130,50 @@ public class Controller
         int desCards = 0;
         Scanner input = new Scanner(System.in);
         System.out.println("Choose which destinations to keep...");
-        // display 3 destination cards
 
-        System.out.println(("4 for Done"));
-        int choice = input.nextInt();
+        // get the destination cards
+        DestinationCard destinationCard1 = cards.getNextDestinationCard();
+        DestinationCard destinationCard2 = cards.getNextDestinationCard();
+        DestinationCard destinationCard3 = cards.getNextDestinationCard();
+        // display 3 destination cards
+        System.out.println("1 - " + destinationCard1.toString());
+        System.out.println("2 - " + destinationCard2.toString());
+        System.out.println("3 - " + destinationCard3.toString());
+        System.out.println(("4 - for Done"));
+        // todo check that the player does not add the same destination card twice, also handle discarded destination cards
+
+        int choice = 0;
         while((desCards < 3 && choice != 4) || desCards == 0) //while picked cards are < 3 then keep picking or if done = true stop loop
         {
-            System.out.println("=> ");
+            System.out.println("=> "); // pick an option
             choice = input.nextInt();
-            if( choice > 0 && choice < 4)
+
+            while(choice == 4 && desCards == 0)
             {
-                // add destination card to players hand
-                ++desCards;
+                System.out.println("Must choose at least 1 Card!");
+                System.out.println("=> ");
+                choice = input.nextInt();
+            }
+
+            if( choice > 0 && choice < 4)
+            {   // add destination card to players hand
+                switch(choice)
+                {
+                    case 1:
+                        player.addDestinationCardToHand(destinationCard1);
+                        ++desCards;
+                        break;
+                    case 2:
+                        player.addDestinationCardToHand(destinationCard2);
+                        ++desCards;
+                        break;
+                    case 3:
+                        player.addDestinationCardToHand(destinationCard3);
+                        ++desCards;
+                        break;
+                }
             }
         }
-        System.out.println("Choose which ones to keep: 1, 2, 3.");
     }
 
     private static void createMap(Graph graph)
