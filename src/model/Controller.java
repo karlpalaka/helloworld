@@ -2,13 +2,12 @@ package model;
 
 import java.util.Scanner;
 
-import javax.sound.midi.Soundbank;
-
 public class Controller
 {
     public static void main(String[] args)
     {
         Graph gameBoard = new Graph(Cities.values().length);
+        Cards cards = new Cards();
         createMap(gameBoard);
 
         gameBoard.printGraph();
@@ -19,7 +18,6 @@ public class Controller
 
         // this is our end condition when a player has <= 2 trains left
         boolean playersHaveTrains = true;
-        boolean temp = false;
 
         // at start of game, players each draw 3 destinationCards
         // players must choose 2 or 3 before continuing
@@ -29,16 +27,16 @@ public class Controller
         // main game loop
         while(playersHaveTrains)
         {
-            playerTurn(jas);
-            playerTurn(rey);
-            playerTurn(gabe);
+            playerTurn(jas, cards);
+            playerTurn(rey, cards);
+            playerTurn(gabe, cards);
 
             // the SOLE end condition for the game
             if (rey.getTrainPieces() <= 2 || jas.getTrainPieces() <= 2 || gabe.getTrainPieces() <= 2) break;
         }
     }
 
-    private static boolean playerTurn(Player player)
+    private static boolean playerTurn(Player player, Cards cards)
     {
         Scanner input = new Scanner(System.in);
 
@@ -59,20 +57,20 @@ public class Controller
         switch (choice)
         {
             case 1:
-                drawTrainCards(player);
+                drawTrainCards(player, cards);
                 break;
             case 2:
-                claimRoute(player);
+                claimRoute(player, cards);
                 break;
             case 3:
-                drawDestinationTickets(player);
+                drawDestinationTickets(player, cards);
                 break;
         }
 
         return false;
     }
 
-    private static void drawTrainCards(Player player) {
+    private static void drawTrainCards(Player player, Cards cards) {
 
         int timesDrawn = 0;
         boolean wildcard = false;
@@ -86,9 +84,7 @@ public class Controller
         {
             System.out.println("1 for Draw From Face Up Deck");
             System.out.println("2 for Draw From Face Down Deck");
-//            System.out.println("3 to stop drawing");
             System.out.println("Choose an option: ");
-            //boolean success = true;
 
             Scanner input = new Scanner(System.in);
             int choice = input.nextInt();
@@ -110,38 +106,10 @@ public class Controller
                     System.out.println("Invalid Choice!");
                     break;
             }
-
         }
-
-//            switch (choice)
-//            {
-//                case 1:
-//                    System.out.println("Drawing from face up Deck");
-//                    break;
-//
-//                case 2:
-//                    System.out.println("Drawing from face down deck");
-//                    break;
-//
-//                case 3:
-//                    if (timesDrawn == 0) {
-//                        System.out.println("You must draw at least 1 card from either deck");
-//                        success = false;
-//                    }
-//                    break;
-//
-//                default:
-//                    System.out.println("Invalid choice!");
-//                    break;
-//            }
-//
-//            if (success)
-//                timesDrawn++;
-//        } while (timesDrawn < 2);
     }
 
-
-    private static void claimRoute(Player player)
+    private static void claimRoute(Player player, Cards cards)
     {
         System.out.println("Choose a route:");
         // display routes for user to choose from
@@ -155,8 +123,7 @@ public class Controller
         // take out the claimed route from map.
     }
 
-
-    private static void drawDestinationTickets(Player player)
+    private static void drawDestinationTickets(Player player, Cards cards)
     {
         // draw 3 and show the player
 
@@ -164,6 +131,9 @@ public class Controller
         Scanner input = new Scanner(System.in);
         System.out.println("Choose which destinations to keep...");
         // display 3 destination cards
+
+
+
         System.out.println(("4 for Done"));
         int choice = input.nextInt();
         while((desCards < 3 && choice != 4) || desCards == 0) //while picked cards are < 3 then keep picking or if done = true stop loop
