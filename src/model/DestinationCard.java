@@ -15,4 +15,10 @@ public class DestinationCard
         this.destination = destination;
         this.score = score;
     }
+
+    @Override
+    public String toString()
+    {
+        return (source.toString() + " " + destination.toString() + " " + Integer.toString(score));
+    }
 }

@@ -131,8 +131,6 @@ public class Controller
         System.out.println("Choose which destinations to keep...");
         // display 3 destination cards
 
-
-
         System.out.println(("4 for Done"));
         int choice = input.nextInt();
         while((desCards < 3 && choice != 4) || desCards == 0) //while picked cards are < 3 then keep picking or if done = true stop loop

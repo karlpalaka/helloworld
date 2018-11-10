@@ -46,6 +46,12 @@ public class Player
     public void addTrainCardToHand(RouteColor routeColor) { trainCards[trainCards.length] = routeColor; }
     public void addDestinationCardToHand(DestinationCard destinationCard) { destinationCards[destinationCards.length] = destinationCard; }
 
+    @Override
+    public String toString()
+    {
+        return (name + " " + teamColor.toString() + " " + Integer.toString(trainPieces) + " " + Integer.toString(score));
+    }
+
     // ========== getters ==========
 
     /**
