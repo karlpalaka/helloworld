@@ -22,6 +22,7 @@ public class Board
      * O - Orange <br>
      * L - Blue
      */
+    @Deprecated
     private char[][] board = {{'*', 'P', '*', 'W', '*'},
                               {'G', ' ', '!', ' ', 'L'},
                               {'*', ' ', '*', ' ', '*'},
@@ -39,6 +40,7 @@ public class Board
      * trainCars.
      * @return Game board array.
      */
+    @Deprecated
     public char[][] getBoard()
     {
         return board;
@@ -51,6 +53,7 @@ public class Board
      * @param c Column index.
      * @return
      */
+    @Deprecated
     public char getElement(int r, int c)
     {
         if (r < 0 || r >= R_LIM || c < 0 || c >= C_LIM) throw new ArrayIndexOutOfBoundsException();
