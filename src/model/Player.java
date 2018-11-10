@@ -29,6 +29,7 @@ public class Player
     }
 
     // ========== other ==========
+
     /**
      * G - Green <br>
      * P - Pink <br>
@@ -42,9 +43,11 @@ public class Player
      * @param routeColor The color character representing color <br>
      * of card.
      */
-    public void addCardToHand(RouteColor routeColor) { trainCards[trainCards.length] = routeColor; }
+    public void addTrainCardToHand(RouteColor routeColor) { trainCards[trainCards.length] = routeColor; }
+    public void addDestinationCardToHand(DestinationCard destinationCard) { destinationCards[destinationCards.length] = destinationCard; }
 
     // ========== getters ==========
+
     /**
      * @return Player's name.
      */
@@ -73,11 +76,11 @@ public class Player
     public RouteColor[] getTrainCards() { return trainCards; }
 
     // ========== setters ==========
+
     /**
      * @param score Initialize score.
      */
     public void setScore(int score) { this.score = score; }
-
     /**
      * @param trainPieces Player's remaining trains.
      */

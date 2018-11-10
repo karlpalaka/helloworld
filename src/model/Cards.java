@@ -12,6 +12,9 @@ public class Cards
     private RouteColor[] trainCards;
     private DestinationCard[] destinationCards;
 
+    private int trainCardsStackPointer;
+    private int destinationCardsStackPointer;
+
     /**
      * Initializes, fills, and randomizes trainCards <br>
      * and destinationCards SHUFFLE_MULTIPLIER number of times.
@@ -20,6 +23,8 @@ public class Cards
     {
         trainCards = new RouteColor[TRAINCARDS_LIMIT];
         destinationCards = new DestinationCard[DESTINATIONCARDS_LIMIT];
+        trainCardsStackPointer = 0;
+        destinationCardsStackPointer = 0;
 
         fillCards();
 
@@ -32,12 +37,26 @@ public class Cards
 
     // ========== getters ==========
 
-    // ========== setters ==========
+    public RouteColor getNextTrainCard()
+    {
+        if (trainCardsStackPointer >= TRAINCARDS_LIMIT) throw new ArrayIndexOutOfBoundsException();
+
+        return trainCards[trainCardsStackPointer++];
+    }
+
+    public DestinationCard getNextDestinationCard()
+    {
+        if (destinationCardsStackPointer >= DESTINATIONCARDS_LIMIT) throw new ArrayIndexOutOfBoundsException();
+
+        return destinationCards[destinationCardsStackPointer++];
+    }
 
     // ========== helpers  ==========
 
     private <T> void randomizeArray(T[] array)
     {
+        if (array == null) throw new NullPointerException();
+
         Random rand = new Random();
 
         for (int i = 0; i < array.length; ++i)
