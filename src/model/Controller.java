@@ -99,7 +99,6 @@ public class Controller
                     break;
             }
 
-
         }
 
 //            switch (choice)
@@ -153,6 +152,7 @@ public class Controller
     {
         // draw 3 and show the player
         System.out.println("Choose which ones to keep: 1, 2, 3.");
+        
         return true;
     }
 
