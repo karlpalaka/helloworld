@@ -138,7 +138,7 @@ public class Controller
 
         System.out.println("Choose a Train Car color");
         // display players different train car card colors
-        System.out.println("");
+
         // if train card color == routes Color and players train cards == number of route cards
         // place players trainCards, decrement their trainCards, decrement their train cars
         // else return false
@@ -150,8 +150,22 @@ public class Controller
     private static boolean drawDestinationTickets(Player player)
     {
         // draw 3 and show the player
-        System.out.println("Choose which ones to keep: 1, 2, 3.");
-        
+        int desCards = 0;
+        Scanner input = new Scanner(System.in);
+        System.out.println("Choose which destinations to keep...");
+        // display 3 destination cards
+        System.out.println(("4 for Done"));
+        int choice = input.nextInt();
+        while((desCards < 3 && choice != 4) || desCards == 0) //while picked cards are < 3 then keep picking or if done = true stop loop
+        {
+            System.out.println("=> ");
+            choice = input.nextInt();
+            if( choice > 0 && choice < 4)
+            {
+                // add destination card to players hand
+                ++desCards;
+            }
+        }
         return true;
     }
 
