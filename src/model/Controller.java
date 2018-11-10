@@ -159,6 +159,7 @@ public class Controller
     private static void drawDestinationTickets(Player player)
     {
         // draw 3 and show the player
+
         int desCards = 0;
         Scanner input = new Scanner(System.in);
         System.out.println("Choose which destinations to keep...");
