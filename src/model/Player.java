@@ -43,7 +43,8 @@ public class Player
      * @param routeColor The color character representing color <br>
      * of card.
      */
-    public void addCardToHand(RouteColor routeColor) { trainCards[trainCards.length] = routeColor; }
+    public void addTrainCardToHand(RouteColor routeColor) { trainCards[trainCards.length] = routeColor; }
+    public void addDestinationCardToHand(DestinationCard destinationCard) { destinationCards[destinationCards.length] = destinationCard; }
 
     // ========== getters ==========
 
