@@ -5,6 +5,7 @@ public class Player
     private String name;
     private TeamColor teamColor;
     private RouteColor[] trainCards;
+    // need to add destination cards
     private int trainPieces;
     private int score;
 
@@ -21,7 +22,7 @@ public class Player
     {
         score = 0;
         trainPieces = 45;
-        trainCards = new RouteColor[Cards.CARD_LIMIT];
+        trainCards = new RouteColor[Cards.TRAINCARDS_LIMIT];
 
         this.name = name;
         this.teamColor = teamColor;

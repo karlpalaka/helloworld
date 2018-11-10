@@ -12,7 +12,6 @@ public class Graph
         this.vertices = vertices;
         adjList = new LinkedList[vertices];
 
-        //initialize adjacency lists for all the vertices
         for (int i = 0; i < vertices; ++i)
         {
             adjList[i] = new LinkedList<>();
