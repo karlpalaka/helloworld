@@ -2,6 +2,8 @@ package model;
 
 import java.util.Scanner;
 
+import javax.sound.midi.Soundbank;
+
 public class Controller
 {
     public static void main(String[] args)
@@ -27,9 +29,9 @@ public class Controller
         // main game loop
         while(playersHaveTrains)
         {
-            temp = playerTurn(jas);
-            temp = playerTurn(rey);
-            temp = playerTurn(gabe);
+            playerTurn(jas);
+            playerTurn(rey);
+            playerTurn(gabe);
 
             // the SOLE end condition for the game
             if (rey.getTrainPieces() <= 2 || jas.getTrainPieces() <= 2 || gabe.getTrainPieces() <= 2) break;
@@ -44,23 +46,33 @@ public class Controller
         System.out.println("2 for Claim a Route");
         System.out.println("3 for Draw Destination Tickets");
         System.out.print("Choose an option: ");
-        // get input
+        System.out.println();
+
         int choice = input.nextInt();
+
+        while (choice < 1 || choice > 3)
+        {
+            System.out.print("Choose a valid option: ");
+            choice = input.nextInt();
+        }
 
         switch (choice)
         {
             case 1:
-                return drawTrainCards(player);
+                drawTrainCards(player);
+                break;
             case 2:
-                return claimRoute(player);
+                claimRoute(player);
+                break;
             case 3:
-                return drawDestinationTickets(player);
+                drawDestinationTickets(player);
+                break;
         }
 
         return false;
     }
 
-    private static boolean drawTrainCards(Player player) {
+    private static void drawTrainCards(Player player) {
 
         int timesDrawn = 0;
         boolean wildcard = false;
@@ -99,7 +111,6 @@ public class Controller
                     break;
             }
 
-
         }
 
 //            switch (choice)
@@ -127,12 +138,10 @@ public class Controller
 //            if (success)
 //                timesDrawn++;
 //        } while (timesDrawn < 2);
-
-        return true;
     }
 
 
-    private static boolean claimRoute(Player player)
+    private static void claimRoute(Player player)
     {
         System.out.println("Choose a route:");
         // display routes for user to choose from
@@ -144,15 +153,13 @@ public class Controller
         // place players trainCards, decrement their trainCards, decrement their train cars
         // else return false
         // take out the claimed route from map.
-        return true;
     }
 
 
-    private static boolean drawDestinationTickets(Player player)
+    private static void drawDestinationTickets(Player player)
     {
         // draw 3 and show the player
         System.out.println("Choose which ones to keep: 1, 2, 3.");
-        return true;
     }
 
     private static void createMap(Graph graph)
