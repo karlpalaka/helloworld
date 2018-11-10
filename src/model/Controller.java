@@ -111,11 +111,13 @@ public class Controller
 
     private static void claimRoute(Player player, Cards cards)
     {
-        System.out.println("Choose a route:");
-        // display routes for user to choose from
-
         System.out.println("Choose a Train Car color");
         // display players different train car card colors
+
+        player.displayTrainCards();
+
+        System.out.println("Choose a route:");
+        // display routes for user to choose from
 
         // if train card color == routes Color and players train cards == number of route cards
         // place players trainCards, decrement their trainCards, decrement their train cars

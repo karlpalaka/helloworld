@@ -9,6 +9,9 @@ public class Player
     private int trainPieces;
     private int score;
 
+    private int trainCardsStackPointer;
+    private int destinationCardsStackPointer;
+
     /**
      * L - Blue <br>
      * R - Red <br>
@@ -20,12 +23,16 @@ public class Player
      */
     public Player(String name, TeamColor teamColor)
     {
+        trainCardsStackPointer = 0;
+        destinationCardsStackPointer = 0;
+
         score = 0;
         trainPieces = 45;
         trainCards = new RouteColor[Cards.TRAINCARDS_LIMIT];
 
         this.name = name;
         this.teamColor = teamColor;
+
     }
 
     // ========== other ==========
@@ -43,8 +50,23 @@ public class Player
      * @param routeColor The color character representing color <br>
      * of card.
      */
-    public void addTrainCardToHand(RouteColor routeColor) { trainCards[trainCards.length] = routeColor; }
-    public void addDestinationCardToHand(DestinationCard destinationCard) { destinationCards[destinationCards.length] = destinationCard; }
+    public void addTrainCardToHand(RouteColor routeColor){ trainCards[trainCardsStackPointer++] = routeColor; }
+    public void addDestinationCardToHand(DestinationCard destinationCard) { destinationCards[destinationCardsStackPointer++] = destinationCard; }
+
+    public void displayTrainCards()
+    {
+        int[] numOfEachCard = new int[9];
+
+        for (RouteColor card : trainCards) ++numOfEachCard[card.ordinal()];
+
+        for (int i : numOfEachCard)
+        {
+            if (numOfEachCard[i] != 0)
+            {
+                System.out.println(RouteColor.fromOrdinal(i).toString() + " " + numOfEachCard[i]);
+            }
+        }
+    }
 
     @Override
     public String toString()
