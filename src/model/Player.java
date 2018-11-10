@@ -1,5 +1,7 @@
 package model;
 
+import javax.print.attribute.standard.Destination;
+
 public class Player
 {
     private String name;
@@ -29,6 +31,7 @@ public class Player
         score = 0;
         trainPieces = 45;
         trainCards = new RouteColor[Cards.TRAINCARDS_LIMIT];
+        destinationCards = new DestinationCard[Cards.DESTINATIONCARDS_LIMIT];
 
         this.name = name;
         this.teamColor = teamColor;
@@ -65,6 +68,21 @@ public class Player
             {
                 System.out.println(RouteColor.fromOrdinal(i).toString() + " " + numOfEachCard[i]);
             }
+        }
+    }
+
+    public void displayDestinationCards()
+    {
+        String sourceString;
+        String destinationString;
+        String scoreString;
+
+        for (DestinationCard card : destinationCards)
+        {
+            sourceString = card.getSource().toString();
+            destinationString = card.getDestination().toString();
+            scoreString = Integer.toString(card.getScore());
+            System.out.println(sourceString + " " + destinationString + " " + scoreString);
         }
     }
 
