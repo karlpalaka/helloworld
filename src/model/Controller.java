@@ -20,15 +20,15 @@ public class Controller
         boolean temp = false;
 
         // main game loop
-//        while(playersHaveTrains)
-//        {
-//            temp = playerTurn(jas);
-//            temp = playerTurn(rey);
-//            temp = playerTurn(gabe);
-//
-//            // the SOLE end condition for the game
-//            if (rey.getTrainPieces() <= 2 || jas.getTrainPieces() <= 2 || gabe.getTrainPieces() <= 2) break;
-//        }
+        while(playersHaveTrains)
+        {
+            temp = playerTurn(jas);
+            temp = playerTurn(rey);
+            temp = playerTurn(gabe);
+
+            // the SOLE end condition for the game
+            if (rey.getTrainPieces() <= 2 || jas.getTrainPieces() <= 2 || gabe.getTrainPieces() <= 2) break;
+        }
     }
 
     private static boolean playerTurn(Player player)
@@ -39,7 +39,7 @@ public class Controller
         System.out.println("2 for Claim a Route");
         System.out.println("3 for Draw Destination Tickets");
         System.out.print("Choose an option: ");
-
+        // get input
         int choice = input.nextInt();
 
         switch (choice)
@@ -58,41 +58,70 @@ public class Controller
     private static boolean drawTrainCards(Player player) {
 
         int timesDrawn = 0;
+        boolean wildcard = false;
+        System.out.println("Please draw Two cards...");
 
-        do {
+        //loop till player picks up at least 2 train cards or picks up 1 wild card from face up
+        //if choice is 1 pick up from face up, timesdrawn++
+        //2 pick up from face down, timesdrawn++
+        //end loop
+        while(timesDrawn < 2 || wildcard == true)
+        {
             System.out.println("1 for Draw From Face Up Deck");
             System.out.println("2 for Draw From Face Down Deck");
-            System.out.println("3 to stop drawing");
+//            System.out.println("3 to stop drawing");
+            System.out.println("Choose an option: ");
+            //boolean success = true;
 
-            boolean success = true;
             Scanner input = new Scanner(System.in);
             int choice = input.nextInt();
 
-            switch (choice)
+            switch(choice)
             {
                 case 1:
-                    System.out.println("Drawing from face up Deck");
+                    System.out.println("Drawing from face up Deck"); // add face up deck
+                    // draw from face up deck
+                    // if card is wildcard, wildcard = true;
+                    ++timesDrawn;
                     break;
-
                 case 2:
-                    System.out.println("Drawing from face down deck");
+                    System.out.println("Drawing from face down Deck");
+                    // draw from face down
+                    ++timesDrawn;
                     break;
-
-                case 3:
-                    if (timesDrawn == 0) {
-                        System.out.println("You must draw at least 1 card from either deck");
-                        success = false;
-                    }
-                    break;
-
                 default:
-                    System.out.println("Invalid choice!");
+                    System.out.println("Invalid Choice!");
                     break;
             }
 
-            if (success)
-                timesDrawn++;
-        } while (timesDrawn < 2);
+
+        }
+
+//            switch (choice)
+//            {
+//                case 1:
+//                    System.out.println("Drawing from face up Deck");
+//                    break;
+//
+//                case 2:
+//                    System.out.println("Drawing from face down deck");
+//                    break;
+//
+//                case 3:
+//                    if (timesDrawn == 0) {
+//                        System.out.println("You must draw at least 1 card from either deck");
+//                        success = false;
+//                    }
+//                    break;
+//
+//                default:
+//                    System.out.println("Invalid choice!");
+//                    break;
+//            }
+//
+//            if (success)
+//                timesDrawn++;
+//        } while (timesDrawn < 2);
 
         return true;
     }
@@ -101,8 +130,16 @@ public class Controller
     private static boolean claimRoute(Player player)
     {
         System.out.println("Choose a route:");
+        // display routes for user to choose from
+
         System.out.println("Choose a Train Car color");
-        // does player have
+        // display players different train car card colors
+        System.out.println("")
+        // if train card color == routes Color and players train cards == number of route cards
+        // place players trainCards, decrement their trainCards, decrement their train cars
+        // else return false
+        // take out the claimed route from map.
+        if()
         return true;
     }
 
