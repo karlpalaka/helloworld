@@ -5,7 +5,7 @@ public class Player
     private String name;
     private TeamColor teamColor;
     private RouteColor[] trainCards;
-    // need to add destination cards
+    private DestinationCard[] destinationCards;
     private int trainPieces;
     private int score;
 
@@ -29,7 +29,6 @@ public class Player
     }
 
     // ========== other ==========
-
     /**
      * G - Green <br>
      * P - Pink <br>
@@ -46,17 +45,15 @@ public class Player
     public void addCardToHand(RouteColor routeColor) { trainCards[trainCards.length] = routeColor; }
 
     // ========== getters ==========
-
     /**
      * @return Player's name.
      */
     public String getName() { return name; }
-
+    public DestinationCard[] getDestinationCards() { return destinationCards; }
     /**
      * @return Player's score.
      */
     public int getScore() { return score; }
-
     /**
      * L - Blue <br>
      * R - Red <br>
@@ -66,19 +63,16 @@ public class Player
      * @return Player's train color.
      */
     public TeamColor getTeamColor() { return teamColor; }
-
     /**
      * @return Player's remaining trains.
      */
     public int getTrainPieces() { return trainPieces; }
-
     /**
      * @return Player's trainCards.
      */
     public RouteColor[] getTrainCards() { return trainCards; }
 
     // ========== setters ==========
-
     /**
      * @param score Initialize score.
      */
@@ -88,9 +82,11 @@ public class Player
      * @param trainPieces Player's remaining trains.
      */
     public void setTrainPieces(int trainPieces) { this.trainPieces = trainPieces; }
-
     /**
      * @param trainCards Player's trainCards.
      */
     public void setTrainCards(RouteColor[] trainCards) { this.trainCards = trainCards; }
+    public void setName(String name) { this.name = name; }
+    public void setTeamColor(TeamColor teamColor) { this.teamColor = teamColor; }
+    public void setDestinationCards(DestinationCard[] destinationCards) { this.destinationCards = destinationCards; }
 }

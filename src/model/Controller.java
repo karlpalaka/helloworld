@@ -138,12 +138,11 @@ public class Controller
 
         System.out.println("Choose a Train Car color");
         // display players different train car card colors
-        System.out.println("")
+        System.out.println("");
         // if train card color == routes Color and players train cards == number of route cards
         // place players trainCards, decrement their trainCards, decrement their train cars
         // else return false
         // take out the claimed route from map.
-        if()
         return true;
     }
 
