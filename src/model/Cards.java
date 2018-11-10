@@ -5,127 +5,92 @@ import java.util.Random;
 
 public class Cards
 {
-    public static final int SHUFFLE_MULTIPLIER = 1; // large values will slow game down
-    public static final int CARD_LIMIT = 144;
+    public static final int SHUFFLE_MULTIPLIER = 1;
+    public static final int TRAINCARDS_LIMIT = 110;
+    public static final int DESTINATIONCARDS_LIMIT = 30;
 
-    // todo should be 30 for final game, but here are 9 destination cards
-    /**
-     * A destination card is a pair of coordinates. <br>
-     * Consider it as (x1, y1) and (x2, y2). <br>
-     * It is used for specifying conditions for <br>
-     * to earn points. The last column specifies <br>
-     * score earned from completed destination.
-     */
-    @Deprecated
-    private char[][] destinationCards = {{0, 0, 2, 0, 3}, // G
-                                         {0, 0, 0, 2, 3}, // P
-                                         {0, 2, 0, 4, 3}, // W
-                                         {0, 2, 2, 2, 1}, // ! - 1 point because easiest
-                                         {2, 0, 4, 0, 3}, // R
-                                         {2, 4, 4, 4, 3}, // Y
-                                         {4, 0, 4, 2, 3}, // B
-                                         {4, 2, 4, 2, 3}, // O
-                                         {0, 4, 2, 4, 3}}; // L (Blue)
-
-    private char[] trainCards;
+    private RouteColor[] trainCards;
+    private DestinationCard[] destinationCards;
 
     /**
      * Initializes, fills, and randomizes trainCards <br>
-     * SHUFFLE_MULTIPLIER number of times.
+     * and destinationCards SHUFFLE_MULTIPLIER number of times.
      */
     public Cards()
     {
-        trainCards = new char[CARD_LIMIT];
+        trainCards = new RouteColor[TRAINCARDS_LIMIT];
+        destinationCards = new DestinationCard[DESTINATIONCARDS_LIMIT];
 
-        Arrays.fill(trainCards, 0,  11, 'G');
-        Arrays.fill(trainCards, 12, 23, 'P');
-        Arrays.fill(trainCards, 24, 35, 'W');
-        Arrays.fill(trainCards, 36, 47, 'R');
-        Arrays.fill(trainCards, 48, 59, 'Y');
-        Arrays.fill(trainCards, 60, 71, 'B');
-        Arrays.fill(trainCards, 72, 83, 'O');
-        Arrays.fill(trainCards, 84, 95, 'L');
+        fillCards();
 
         for (int i = 0; i < SHUFFLE_MULTIPLIER; ++i)
         {
             randomizeArray(trainCards);
+            randomizeArray(destinationCards);
         }
     }
 
     // ========== getters ==========
 
-    /**
-     * A destination card is a pair of coordinates. <br>
-     * Consider it as (x1, y1) and (x2, y2). <br>
-     * It is used for specifying conditions for <br>
-     * to earn points.
-     * @return Destination cards.
-     */
-    public char[][] getDestinationCards()
-    {
-        return destinationCards;
-    }
-
-    /**
-     * Returns a row of destinationCards. <br>
-     * A destination card is a pair of coordinates. <br>
-     * Consider it as (x1, y1) and (x2, y2). <br>
-     * It is used for specifying conditions for <br>
-     * to earn points.
-     * @param r Specifies row to return.
-     * @return Row specified by r.
-     */
-    public char[] getDesintationCard(int r)
-    {
-        if (r < 0 || r > 5) throw new ArrayIndexOutOfBoundsException();
-
-        char[] temp = new char[5];
-
-        for (int i = 0; i < 5; ++i)
-        {
-            temp[i] = destinationCards[r][i];
-        }
-
-        return temp;
-    }
-
-    /**
-     * Used for player placement conditions. <br>
-     * If player has enough of a certain color, <br>
-     * they can place trains on the Board.
-     * @return Array of cards.
-     */
-    public char[] getTrainCards()
-    {
-        return this.trainCards;
-    }
-
     // ========== setters ==========
-
-    /**
-     * Used for player placement conditions. <br>
-     * If player has enough of a certain color, <br>
-     * they can place trains on the Board.
-     * @param trainCards Array of cards.
-     */
-    public void setTrainCards(char[] trainCards)
-    {
-        this.trainCards = trainCards;
-    }
 
     // ========== helpers  ==========
 
-    private static void randomizeArray(char[] array)
+    private <T> void randomizeArray(T[] array)
     {
         Random rand = new Random();
 
         for (int i = 0; i < array.length; ++i)
         {
             int randomPosition = rand.nextInt(array.length);
-            char temp = array[i];
+            T temp = array[i];
 
             array[i] = array[randomPosition];
             array[randomPosition] = temp;
         }
+    }
+
+    private void fillCards()
+    {
+        Arrays.fill(trainCards, 0, 11, RouteColor.PURPLE);
+        Arrays.fill(trainCards, 12, 23, RouteColor.WHITE);
+        Arrays.fill(trainCards, 24, 35, RouteColor.BLUE);
+        Arrays.fill(trainCards, 36, 47, RouteColor.YELLOW);
+        Arrays.fill(trainCards, 48, 59, RouteColor.ORANGE);
+        Arrays.fill(trainCards, 60, 71, RouteColor.BLACK);
+        Arrays.fill(trainCards, 72, 83, RouteColor.RED);
+        Arrays.fill(trainCards, 84, 95, RouteColor.GREEN);
+        Arrays.fill(trainCards, 96, 110, RouteColor.ANY); // 14 wildcards
+
+        destinationCards[0] = new DestinationCard(Cities.DENVER, Cities.EL_PASO, 4);
+        destinationCards[0] = new DestinationCard(Cities.KANSAS_CITY, Cities.HOUSTON, 5);
+        destinationCards[0] = new DestinationCard(Cities.NEW_YORK, Cities.ATLANTA, 6);
+        destinationCards[0] = new DestinationCard(Cities.CHICAGO, Cities.NEW_ORLEANS, 7);
+        destinationCards[0] = new DestinationCard(Cities.CALGARY, Cities.SALT_LAKE_CITY, 7);
+        destinationCards[0] = new DestinationCard(Cities.HELENA, Cities.LOS_ANGELES, 8);
+        destinationCards[0] = new DestinationCard(Cities.DULUTH, Cities.HOUSTON, 8);
+        destinationCards[0] = new DestinationCard(Cities.SAULT_ST_MARIE, Cities.NASHVILLE, 8);
+        destinationCards[0] = new DestinationCard(Cities.MONTREAL, Cities.ATLANTA, 9);
+        destinationCards[0] = new DestinationCard(Cities.SAULT_ST_MARIE, Cities.OKLAHOMA_CITY, 9);
+        destinationCards[0] = new DestinationCard(Cities.SEATTLE, Cities.LOS_ANGELES, 9);
+        destinationCards[0] = new DestinationCard(Cities.CHICAGO, Cities.SANTA_FE, 9);
+        destinationCards[0] = new DestinationCard(Cities.DULUTH, Cities.EL_PASO, 10);
+        destinationCards[0] = new DestinationCard(Cities.TORONTO, Cities.MIAMI, 10);
+        destinationCards[0] = new DestinationCard(Cities.PORTLAND, Cities.PHOENIX, 11);
+        destinationCards[0] = new DestinationCard(Cities.DALLAS, Cities.NEW_YORK, 11);
+        destinationCards[0] = new DestinationCard(Cities.DENVER, Cities.PITTSBURG, 11);
+        destinationCards[0] = new DestinationCard(Cities.WINNIPEG, Cities.LITTLE_ROCK, 11);
+        destinationCards[0] = new DestinationCard(Cities.WINNIPEG, Cities.HOUSTON, 12);
+        destinationCards[0] = new DestinationCard(Cities.BOSTON, Cities.MIAMI, 12);
+        destinationCards[0] = new DestinationCard(Cities.VANCOUVER, Cities.SANTA_FE, 13);
+        destinationCards[0] = new DestinationCard(Cities.CALGARY, Cities.PHOENIX, 13);
+        destinationCards[0] = new DestinationCard(Cities.MONTREAL, Cities.NEW_ORLEANS, 13);
+        destinationCards[0] = new DestinationCard(Cities.LOS_ANGELES, Cities.CHICAGO, 16);
+        destinationCards[0] = new DestinationCard(Cities.SAN_FRANCISCO, Cities.ATLANTA, 17);
+        destinationCards[0] = new DestinationCard(Cities.PORTLAND, Cities.NASHVILLE, 17);
+        destinationCards[0] = new DestinationCard(Cities.VANCOUVER, Cities.MONTREAL, 20);
+        destinationCards[0] = new DestinationCard(Cities.LOS_ANGELES, Cities.MIAMI, 20);
+        destinationCards[0] = new DestinationCard(Cities.LOS_ANGELES, Cities.NEW_YORK, 21);
+        destinationCards[0] = new DestinationCard(Cities.SEATTLE, Cities.NEW_YORK, 22);
     }
 }

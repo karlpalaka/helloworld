@@ -19,6 +19,11 @@ public class Controller
         boolean playersHaveTrains = true;
         boolean temp = false;
 
+        // at start of game, players each draw 3 destinationCards
+        // players must choose 2 or 3 before continuing
+        // then, every player getse a total of 4 cards to start
+        // then, main game loop where players choose what they want to do
+
         // main game loop
         while(playersHaveTrains)
         {
@@ -153,7 +158,6 @@ public class Controller
 
     private static void createMap(Graph graph)
     {
-        // top left corner of board
         graph.addEdge(Cities.VANCOUVER, Cities.CALGARY, RouteColor.ANY, 3);
         graph.addEdge(Cities.VANCOUVER, Cities.SEATTLE, RouteColor.ANY, 1);
         graph.addEdge(Cities.VANCOUVER, Cities.SEATTLE, RouteColor.ANY, 1);
