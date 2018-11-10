@@ -176,6 +176,7 @@ public class Controller
                 }
             }
         }
+        player.displayDestinationCards();
     }
 
     private static void createMap(Graph graph)
