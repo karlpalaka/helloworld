@@ -4,10 +4,12 @@ public class DestinationCard
 {
     private Cities source;
     private Cities destination;
+
     private int score;
 
     public Cities getSource() { return source; }
     public Cities getDestination() { return destination; }
+    public int getScore() { return score; }
 
     public DestinationCard(Cities source, Cities destination, int score)
     {
