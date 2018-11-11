@@ -147,13 +147,13 @@ public class Controller
         int choice = 0;
         while((desCards < 3 && choice != 4) || desCards == 0) //while picked cards are < 3 then keep picking or if done = true stop loop
         {
-            System.out.println("=> "); // pick an option
+            System.out.print("=> "); // pick an option
             choice = input.nextInt();
 
             while(choice == 4 && desCards == 0)
             {
                 System.out.println("Must choose at least 1 Card!");
-                System.out.println("=> ");
+                System.out.print("=> ");
                 choice = input.nextInt();
             }
 
@@ -176,7 +176,8 @@ public class Controller
                 }
             }
         }
-        player.displayDestinationCards();
+        //player.displayDestinationCards();
+
     }
 
     private static void createMap(Graph graph)
