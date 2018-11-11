@@ -84,7 +84,7 @@ public class Controller
         {
             System.out.println("1 for Draw From Face Up Deck");
             System.out.println("2 for Draw From Face Down Deck");
-            System.out.println("Choose an option: ");
+            System.out.print("Choose an option: ");
 
             Scanner input = new Scanner(System.in);
             int choice = input.nextInt();
@@ -93,13 +93,15 @@ public class Controller
             {
                 case 1:
                     System.out.println("Drawing from face up Deck"); // add face up deck
-                    // draw from face up deck
-                    // if card is wildcard, wildcard = true;
+                    // draw from face up deck and add to player hand
+                    // todo if card is wildcard, wildcard = true;
                     ++timesDrawn;
                     break;
                 case 2:
                     System.out.println("Drawing from face down Deck");
-                    // draw from face down
+                    // draw from face down and add to player hand
+                    player.addTrainCardToHand(cards.getNextTrainCard());
+                    // player.displayTrainCards(); Doesnt work...
                     ++timesDrawn;
                     break;
                 default:
@@ -113,10 +115,9 @@ public class Controller
     {
         System.out.println("Choose a Train Car color");
         // display players different train car card colors
+        player.displayTrainCards(); // doesnt work...
 
-        player.displayTrainCards();
-
-        System.out.println("Choose a route:");
+        System.out.println("Choose a route: ");
         // display routes for user to choose from
 
         // if train card color == routes Color and players train cards == number of route cards
@@ -176,7 +177,7 @@ public class Controller
                 }
             }
         }
-        //player.displayDestinationCards();
+        player.displayDestinationCards();
 
     }
 
