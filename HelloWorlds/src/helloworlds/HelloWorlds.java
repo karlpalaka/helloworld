@@ -7,7 +7,7 @@ package helloworlds;
 
 /**
  *
- * @author COSLAB
+ * @author karpa
  */
 public class HelloWorlds
 {
